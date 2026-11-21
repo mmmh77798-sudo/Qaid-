@@ -1,0 +1,7 @@
+{$QAYD_DOMAIN} {
+	encode zstd gzip
+	reverse_proxy desk:3100 {
+		header_up X-Forwarded-Proto {http.request.scheme}
+		header_up X-Forwarded-For {http.request.remote.host}
+	}
+}

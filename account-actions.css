@@ -1,0 +1,70 @@
+/* High-visibility, channel-specific actions on the account page. */
+.account-message-card{border:1px solid #d7e2f5;border-radius:13px;background:var(--paper);padding:10px 12px;margin:0 0 15px;display:flex;align-items:center;justify-content:space-between;gap:12px;box-shadow:var(--shadow)}
+.account-message-head{min-width:0;display:flex;align-items:center;gap:9px}
+.account-message-head .tint{width:39px;height:39px;border-radius:10px;flex:none;background:var(--mint-lite);color:var(--mint)}
+.account-message-head h2{font-size:15px;line-height:1.45}
+.account-message-head p{color:var(--muted);font-size:11px;line-height:1.55;margin-top:1px}
+.account-message-currency{align-self:flex-start;font-size:10px;line-height:1.35;font-weight:700;color:var(--blue-dark);background:var(--blue-lite);padding:4px 8px;border-radius:12px;white-space:nowrap;max-width:115px;overflow:hidden;text-overflow:ellipsis}
+.account-message-buttons{display:flex;gap:6px;flex:none}
+.account-message-buttons .btn{min-height:43px}
+.btn.msg-sms{color:#2847aa;background:#edf2ff;border-color:#dce6ff}
+.btn.msg-wa{color:#fff;background:#08775e;border-color:#08775e}
+.btn.msg-sms:hover{background:#dfe9ff;border-color:#c9d9ff}
+.btn.msg-wa:hover{background:#075e4b;border-color:#075e4b}
+[data-theme=dark] .account-message-card{border-color:var(--line)}
+[data-theme=dark] .btn.msg-sms{color:#dce7ff;background:#273c70;border-color:#384f8b}
+[data-theme=dark] .btn.msg-sms:hover{background:#314780}
+.account-menu-section{padding-bottom:11px;margin-bottom:10px;border-bottom:1px solid var(--line)}
+.account-menu-section:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
+.account-menu-section h3{margin:0 0 5px;color:var(--muted);font-size:12px;font-weight:700}
+.account-menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.account-menu-grid .btn{justify-content:flex-start;white-space:normal;text-align:start;min-height:42px;overflow-wrap:anywhere;padding-block:7px}
+.short-recipient{border-radius:10px;border:1px solid var(--line);background:var(--wash);padding:8px 10px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.short-recipient>div{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 7px;min-width:0}
+.short-recipient>div span,.short-recipient small{color:var(--muted);font-size:11px}
+.short-recipient strong{font-size:13px;overflow-wrap:anywhere}
+.short-phone{font-size:12px;color:var(--blue-dark);direction:ltr}
+.short-balance-context{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.short-balance-context span,.statement-filter-strip span{padding:2px 7px;border:1px solid var(--line);border-radius:8px;background:var(--blue-lite);color:var(--blue-dark);font-size:11px}
+.short-meta{margin-top:5px;display:flex;align-items:baseline;justify-content:space-between;gap:6px;color:var(--muted);font-size:11px;flex-wrap:wrap}
+.short-meta #draft-chars{font-weight:600;color:var(--blue-dark)}
+.short-send-note{margin-top:8px}
+.statement-filter-strip{padding:8px 13px 3px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;color:var(--blue-dark)}
+.account-limit-card{border:1px solid var(--line);border-inline-start:3px solid var(--blue);background:var(--paper);padding:10px 12px;border-radius:11px}
+.account-limit-card.at-limit{border-inline-start-color:#b77b12}
+.account-limit-head,.account-limit-figures{display:flex;align-items:center;justify-content:space-between;gap:5px 8px;flex-wrap:wrap}
+.account-limit-head .icon{color:var(--blue-dark)}
+.account-limit-head span,.account-limit-figures span{color:var(--muted);font-size:11px}
+.account-limit-head strong{font-size:13px}
+.account-limit-figures b{font-size:12px;color:var(--blue-dark)}
+.account-limit-card.at-limit .account-limit-figures b{color:#895816}
+[data-theme=dark] .account-limit-card.at-limit .account-limit-figures b{color:#f1c574}
+.account-limit-card progress{display:block;margin:8px 0 5px;width:100%;height:7px;accent-color:var(--blue);border-radius:6px;border:0}
+.account-limit-card progress::-webkit-progress-bar{background:var(--line);border-radius:6px}
+.account-limit-card progress::-webkit-progress-value{background:var(--blue);border-radius:6px}
+.account-limit-card.at-limit progress::-webkit-progress-value{background:#b77b12}
+.account-limit-preview{display:grid;gap:6px;margin-bottom:4px}
+#thermal-status:not(:empty){margin-top:8px}
+@media(max-width:650px){
+  .account-message-card{display:grid;gap:8px}
+  .account-message-head div{flex:1}
+  .account-message-buttons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .account-message-buttons .btn{padding-inline:5px;font-size:12px;white-space:normal}
+}
+@media(max-width:320px){.account-menu-grid .btn{padding-inline:5px;font-size:11px}}
+
+@media print{
+  #print-area[data-receipt]{font-family:'IBM Plex Sans Arabic',Tahoma,Arial,sans-serif;color:#000}
+  #print-area .thermal-receipt{width:100%;font-size:8pt;line-height:1.35;overflow-wrap:anywhere}
+  #print-area .thermal-receipt h1{font-size:12pt;margin:3px 0 6px;text-align:center;line-height:1.25}
+  #print-area .thermal-brand{text-align:center;font-weight:700}
+  #print-area .thermal-receipt p{font-size:8pt;margin:3px 0}
+  #print-area .thermal-receipt .small{font-size:7pt}
+  .thermal-meta,.thermal-record,.thermal-end{padding:4px 0;border-top:1px dashed #000;break-inside:avoid}
+  .thermal-record strong{display:inline-block;margin-bottom:2px}
+  .thermal-end h2{font-size:10pt;margin:3px 0}
+  .thermal-kv{display:flex;align-items:baseline;justify-content:space-between;gap:2px 5px;flex-wrap:wrap;padding:1px 0}
+  .thermal-kv>span{color:#333}
+  .thermal-kv bdi{font-weight:600}
+  .thermal-total-net,.thermal-total-ending{border-top:1px solid #000;font-weight:700}
+}

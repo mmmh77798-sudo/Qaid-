@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# No phrase in argv, the shell history, environment, or a plaintext file.
+set +x
+set -euo pipefail
+umask 077
+unset phrase again
+trap 'unset phrase again' EXIT
+usage(){ printf '%s\n' 'Usage: qayd-recovery verify FILE | restore FILE NEW_DIRECTORY | seal-snapshot SNAPSHOT NEW_FILE' >&2; exit 1; }
+case ${1-} in
+  verify) (( $# == 2 )) || usage;;
+  restore|seal-snapshot) (( $# == 3 )) || usage;;
+  *) usage;;
+esac
+[[ -t 0 ]] || { printf '%s\n' 'Run from a private interactive terminal.' >&2; exit 1; }
+root=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
+# Confirm only when creating an archive. The Node reader bounds and validates the phrase.
+IFS= read -r -s -p 'عبارة الاستعادة: ' phrase
+printf '\n'
+if [[ $1 == seal-snapshot ]]; then
+  IFS= read -r -s -p 'أعد كتابة العبارة: ' again
+  printf '\n'
+  [[ "$phrase" == "$again" ]] || { printf '%s\n' 'العبارتان غير متطابقتين. لم يُكتب ملف.' >&2; exit 1; }
+  unset again
+fi
+printf '%s' "$phrase" | node "$root/restore.cjs" "$@"

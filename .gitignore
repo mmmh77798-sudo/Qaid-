@@ -1,0 +1,16 @@
+data/
+node_modules/
+.env
+*.apk
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+*.db
+*.p12
+*.jks
+*.pem
+*.key
+*.crt
+*.cer
+*.qayd-recovery
+*.sqlite3

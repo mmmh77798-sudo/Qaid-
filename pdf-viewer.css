@@ -1,0 +1,80 @@
+/* Report totals and the dedicated reader share the ledger palette. */
+.report-final{margin:12px 14px 15px;padding:12px 13px 10px;border:1px solid var(--line);border-inline-start:3px solid var(--blue);border-radius:10px;background:var(--paper);min-width:0}
+.report-final-head{display:flex;justify-content:space-between;align-items:baseline;gap:4px 14px;flex-wrap:wrap;padding-bottom:8px}
+.report-final-head h3{font-size:14px;line-height:1.35}
+.report-final-unit{color:var(--blue-dark);font-weight:600;font-size:12px;overflow-wrap:anywhere}
+.report-final dl{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,135px),1fr));gap:6px}
+.report-final dl>div{padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:var(--wash);min-width:0}
+.report-final dt{font-size:11px;color:var(--muted)}
+.report-final dd{margin:2px 0 0;line-height:1.4;font-size:13px;font-weight:700;overflow-wrap:anywhere}
+.report-final dd bdi{max-width:100%}
+.report-final .final-net{background:var(--blue-lite);border-color:transparent}
+.report-final .final-ending{background:var(--mint-lite);border-color:transparent}
+.report-final p{margin:7px 0 0;color:var(--muted);font-size:11px;line-height:1.55}
+.report-final-preview{border-inline-start-width:1px}
+.btn-pdf{min-height:38px;padding-inline:10px}
+
+body.pdf-open{overflow:hidden}
+#pdf-dialog{padding:0;margin:auto;border:1px solid var(--line);border-radius:15px;width:min(100% - 28px,1060px);max-width:none;height:min(100vh - 24px,940px);height:min(100dvh - 24px,940px);max-height:none;color:var(--ink);background:var(--paper);overflow:hidden;outline:none}
+#pdf-dialog::backdrop{background:#0d1733b3}
+.pdf-shell{height:100%;display:flex;flex-direction:column;min-width:0;isolation:isolate}
+.pdf-header,.pdf-toolbar,.pdf-currencies,.pdf-footer{flex:none;min-width:0;padding-inline:16px;display:flex;gap:10px;align-items:center;background:var(--paper)}
+.pdf-header{position:relative;padding-block:9px;border-block-start:3px solid var(--blue);border-block-end:1px solid var(--line)}
+.pdf-heading{min-width:0;flex:1}
+.pdf-heading p{font-size:11px;color:var(--muted);font-weight:600;line-height:1.3;margin-bottom:2px}
+.pdf-heading p span{color:var(--faded);padding-inline:3px}
+.pdf-heading h2{font-size:17px;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:right}
+.pdf-format{display:flex;align-items:center;gap:5px;padding:4px 7px;border-radius:6px;background:var(--blue-lite);color:var(--blue-dark);font-size:11px;letter-spacing:.5px;font-weight:700}
+.pdf-format i{background:var(--blue);width:5px;height:5px;border-radius:100%}
+.pdf-toolbar{justify-content:space-between;padding-block:7px;border-block-end:1px solid var(--line);gap:6px}
+.pdf-file-actions,.pdf-zoom-actions,.pdf-currency-nav,.pdf-footer>div{display:flex;align-items:center;gap:5px}
+.pdf-btn{display:inline-flex;min-width:38px;min-height:39px;align-items:center;justify-content:center;gap:5px;padding:0 7px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font-weight:600;font-size:12px;line-height:1.2;white-space:nowrap;touch-action:manipulation}
+.pdf-btn:not(:disabled):hover{background:var(--wash)}
+.pdf-btn.pdf-primary{background:var(--blue);border-color:var(--blue);color:#fff;padding:0 9px}
+.pdf-btn.pdf-primary:not(:disabled):hover{background:var(--blue-dark);border-color:var(--blue-dark)}
+#pdf-fit{min-width:54px;font-variant-numeric:tabular-nums;color:var(--blue-dark);background:var(--blue-lite);border-color:transparent}
+.pdf-currencies{display:grid;gap:2px;padding-block:6px;color:var(--muted);border-block-end:1px solid var(--line)}
+.pdf-currency-line{display:flex;gap:7px;align-items:center;justify-content:space-between}
+.pdf-currency-field{display:flex;align-items:center;gap:6px;min-width:0;max-width:min(100%,460px);flex:1;color:var(--blue-dark)}
+.pdf-currency-field select{width:100%;min-width:0;min-height:38px;padding:4px 6px;border:1px solid var(--line);border-radius:8px;background:var(--wash);color:var(--ink);font-size:13px;font-weight:600;text-overflow:ellipsis}
+.pdf-currency-field select:disabled{opacity:1;appearance:none;color:var(--ink);cursor:default}
+.pdf-counter{min-width:34px;text-align:center;white-space:nowrap;font-size:11px;color:var(--muted)}
+.pdf-hint{font-size:11px;line-height:1.45}
+.pdf-work{position:relative;flex:1;min-height:0;background:#e5eaf4}
+[data-theme=dark] .pdf-work{background:#0b1426}
+.pdf-viewport{position:absolute;inset:0;overflow:auto;padding:12px;overscroll-behavior:contain;touch-action:pan-y;outline-offset:-3px!important}
+.pdf-viewport.zoomed{touch-action:pan-x pan-y}
+.pdf-stack{position:relative;margin:0 auto;display:flex;flex-direction:column;gap:12px;max-width:none;user-select:none}
+.pdf-stack.pdf-enter-next{animation:pdf-next .2s ease-out}
+.pdf-stack.pdf-enter-prev{animation:pdf-prev .2s ease-out}
+@keyframes pdf-next{from{transform:translateX(-16px);opacity:.5}to{transform:none;opacity:1}}
+@keyframes pdf-prev{from{transform:translateX(16px);opacity:.5}to{transform:none;opacity:1}}
+@media(prefers-reduced-motion:reduce){.pdf-stack{animation:none!important}}
+.pdf-sheet{position:relative;flex:none;width:100%;height:var(--page-height);background:#fff;box-shadow:0 2px 9px #17294f22;overflow:hidden}
+.pdf-sheet canvas{display:block;width:100%;height:100%;pointer-events:none}
+.pdf-page-error{display:grid;place-items:center;text-align:center;direction:rtl;color:#7d2443;padding:10px}
+.pdf-status{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;padding:12px;text-align:center;color:var(--muted);font-size:13px;pointer-events:none}
+.pdf-status.failed{pointer-events:auto}
+.pdf-status-stamp{display:grid;place-items:center;width:47px;height:47px;border-radius:14px;color:var(--blue-dark);background:var(--paper);border:1px solid var(--line)}
+.pdf-footer{justify-content:space-between;border-block-start:1px solid var(--line);padding-block:6px;font-size:12px;color:var(--muted)}
+#pdf-summary{color:var(--blue-dark);background:var(--blue-lite);border-color:transparent}
+.pdf-message{flex:none;padding:5px 16px;background:var(--mint-lite);color:var(--mint);font-size:12px}
+.pdf-message[data-error=true]{background:var(--red-lite);color:var(--red)}
+@media(max-width:640px){
+  #pdf-dialog{width:100%;height:100%;height:100dvh;border:0;border-radius:0}
+  .pdf-header,.pdf-toolbar,.pdf-currencies,.pdf-footer{padding-inline:10px}
+  .pdf-header{padding-block:7px}
+  .pdf-heading h2{font-size:15px}
+  .pdf-btn{min-height:40px;min-width:38px}
+}
+@media(max-width:345px){#pdf-save span{display:none}.pdf-heading h2{font-size:14px}}
+@media print{
+  #pdf-dialog,#pdf-dialog::backdrop{display:none!important}
+  html body.pdf-open{overflow:visible}
+  #print-area .report-final{background:white;border-color:#d5deed;border-inline-start-color:#344ec3;margin:12px 0 0;break-inside:avoid}
+  #print-area .report-final dl{grid-template-columns:repeat(3,minmax(0,1fr))}
+  #print-area .report-final dl>div{background:#f7f9fc;border-color:#d5deed}
+  #print-area .report-final :is(dt,p){color:#506383}
+  #print-area .report-final :is(h3,dd){color:#192742}
+  #print-area .report-final-unit{color:#344ec3}
+}

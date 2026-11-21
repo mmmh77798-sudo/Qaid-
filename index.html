@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta name="description" content="قيد — دفتر ذمم عربي لإدارة الديون والأرصدة وكشوف الحساب.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; worker-src blob:; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data: blob:; form-action 'none'; base-uri 'none'">
+  <title>قيد — دفتر الذمم</title>
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="pdf-viewer.css">
+  <link rel="stylesheet" href="account-actions.css">
+  <link rel="stylesheet" href="movement-notice.css">
+  <link rel="stylesheet" href="collections.css">
+  <link rel="stylesheet" href="category-copy.css">
+  <link rel="stylesheet" href="release.css">
+  <link rel="stylesheet" href="team.css">
+  <script defer src="release.js"></script>
+  <script defer src="ledger.js"></script>
+  <script defer src="category-backup.js"></script>
+  <script defer src="collections-model.js"></script>
+  <script defer src="activity.js"></script>
+  <script defer src="receipt-book.js"></script>
+  <script defer src="collections.js"></script>
+  <script defer src="report-totals.js"></script>
+  <script defer src="account-features.js"></script>
+  <script defer src="xlsx.js"></script>
+  <script defer src="message-phone.js"></script>
+  <script defer src="movement-notice.js"></script>
+  <script defer src="account-actions.js"></script>
+  <script defer src="thermal.js"></script>
+  <script defer src="pdf-layout.js"></script>
+  <script defer src="pdf-viewer.js"></script>
+  <script defer src="icons.js"></script>
+  <script defer src="vault.js"></script>
+  <script defer src="legacy.js"></script>
+  <script defer src="db-engine.js"></script>
+  <script defer src="db-backup.js"></script>
+  <script defer src="category-copy-ui.js"></script>
+  <script defer src="backup-review.js"></script>
+  <script defer src="shared-link.js"></script>
+  <script defer src="team.js"></script>
+  <script defer src="extras.js"></script>
+  <script defer src="app.js"></script>
+  <script defer src="migration.js"></script>
+</head>
+<body>
+  <div id="lock-screen" hidden></div>
+  <div id="app"><aside id="sidebar" class="sidebar"></aside><div class="workspace"><header id="topbar" class="topbar"></header><main id="page" class="page" tabindex="-1"></main></div><nav id="mobilebar" class="mobilebar" aria-label="التنقل"></nav></div>
+  <dialog id="dialog" dir="rtl" aria-labelledby="dialog-title"><div id="dialog-content"></div></dialog>
+  <dialog id="pdf-dialog" dir="rtl" aria-labelledby="pdf-title"></dialog>
+  <div id="movement-notice"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="print-area"></div>
+  <input type="file" id="backup-file" accept=".db,.sqlite,.sqlite3,.json,application/json,application/x-sqlite3,application/vnd.sqlite3,application/octet-stream" hidden>
+  <input type="file" id="category-backup-file" accept=".db,.sqlite,.sqlite3,.json,application/json,application/x-sqlite3,application/vnd.sqlite3,application/octet-stream" hidden>
+  <input type="file" id="verify-backup-file" accept=".db,.sqlite,.sqlite3,.json,application/json,application/x-sqlite3,application/vnd.sqlite3,application/octet-stream" hidden>
+  <noscript>يرجى تفعيل جافاسكريبت لاستخدام قيد.</noscript>
+</body>
+</html>
